@@ -4,7 +4,7 @@ const CardApi = {
   all: {
   	async handler(request, h) {
       try {
-        return await Card.find({}).sort({ createdAt: 'desc' });
+        return await Card.find({}).where("state").ne("done_bucket").sort({ createdAt: 'desc' });
       } catch (err) {
         console.log(err)
       }
